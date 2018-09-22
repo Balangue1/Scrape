@@ -28,23 +28,21 @@ app.use(express.static("public"));
 
 // Connect to the Mongo DB
 // If deployed, use the deployed database. Otherwise use the local mongoHeadlines database
-//test/ var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 
 // Set mongoose to leverage built in JavaScript ES6 Promises
 // Connect to the Mongo DB
-//test/ mongoose.Promise = Promise;
-//test/ mongoose.connect(MONGODB_URI);
+mongoose.Promise = Promise;
+mongoose.connect(MONGODB_URI);
 
-//test/ mongoose.connect("mongodb://localhost/week18Populater");
-mongoose.connect("mongodb://localhost/mongoHeadlines");
+// test/mongoose.connect("mongodb://localhost/week18Populater");
+//works...   mongoose.connect("mongodb://localhost/mongoHeadlines");
 
 // Routes
 
 // A GET route for scraping the echoJS website
 app.get("/scrape", function(req, res) {
   // First, we grab the body of the html with request
-//axios.get("http://www.echojs.com/").then(function(response) {
-//  axios.get("https://www.cnn.com/world").then(function(response) {
   axios.get("https://medium.com/topic/technology").then(function(response) {
 
   
