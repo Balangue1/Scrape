@@ -66,6 +66,11 @@ app.get("/scrape", function(req, res) {
         .children("a")
         .attr("href");
 
+// Insert Article Summary here        
+//    result.summary = $(this)
+//      .children("a")
+//      .text();  
+
       // Create a new Article using the `result` object built from scraping
       db.Article.create(result)
         .then(function(dbArticle) {
